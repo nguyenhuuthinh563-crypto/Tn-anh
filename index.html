@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ôn tập giữa kì I – Tiếng Anh 11</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🟢</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --tint:#f1fff3;
+  --line:#cdeed4;
+  --ink:#08301a;
+  --ink-soft:#4b6b57;
+  --neon:#2dff4f;
+  --neon-deep:#0fbf2f;
+  --green-text:#0a7d25;
+  --red:#ff2e43;
+  --red-bg:#ffecee;
+  --glow:0 0 0 2px var(--neon), 0 0 22px rgba(45,255,79,.6);
+}
+@media (prefers-color-scheme: dark){
+  /* trang giữ tông trắng – xanh neon nên không đổi sang nền tối */
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  line-height:1.55;-webkit-font-smoothing:antialiased;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--neon-deep);outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;padding:20px 18px 60px}
+[hidden]{display:none!important}
+
+/* ---------- Home ---------- */
+.home{padding-top:clamp(28px,8vh,80px)}
+.home h1{font-size:clamp(30px,7vw,48px);line-height:1.1;font-weight:800;margin:0 0 10px;letter-spacing:-.02em}
+.home .sub{color:var(--ink-soft);margin:0 0 30px;max-width:46ch}
+.pick{display:grid;gap:12px}
+.pick button{
+  text-align:left;background:#fff;border:2px solid var(--line);border-radius:16px;padding:16px 18px;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  transition:border-color .15s, box-shadow .15s, transform .15s;
+}
+.pick button:hover{border-color:var(--neon);box-shadow:var(--glow)}
+.pick button:active{transform:scale(.985)}
+.pick b{font-size:18px;font-weight:700}
+.pick small{display:block;color:var(--ink-soft);font-weight:400;font-size:14px;margin-top:2px}
+.pick .count{font-weight:800;font-size:22px;color:var(--green-text);white-space:nowrap}
+.rules{margin-top:28px;padding:14px 16px;background:var(--tint);border-left:5px solid var(--neon);border-radius:0 12px 12px 0;color:var(--ink-soft);font-size:15px}
+
+/* ---------- Top bar ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .in{max-width:760px;margin:0 auto;padding:10px 18px 12px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:14px;font-weight:600}
+.row .quit{background:none;border:1.5px solid var(--line);border-radius:999px;padding:4px 12px;font-size:13px;color:var(--ink-soft)}
+.row .quit:hover{border-color:var(--neon-deep);color:var(--ink)}
+.clock{font-variant-numeric:tabular-nums;color:var(--green-text)}
+.timebar{height:12px;border-radius:999px;background:var(--tint);border:1px solid var(--line);overflow:hidden;margin-top:8px}
+.timebar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--neon-deep),var(--neon));box-shadow:0 0 12px var(--neon);border-radius:999px;transition:width .25s linear}
+.timebar.over i{animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.45}}
+.tlabel{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-soft);margin-top:5px}
+.prog{height:4px;background:var(--tint);border-radius:4px;margin-top:8px;overflow:hidden}
+.prog i{display:block;height:100%;background:var(--neon-deep);width:0;transition:width .3s}
+
+/* ---------- Question ---------- */
+.card{margin-top:20px}
+.tag{display:inline-block;font-size:13px;font-weight:600;color:var(--green-text);background:var(--tint);border:1px solid var(--line);border-radius:999px;padding:3px 12px}
+.instr{margin:12px 0 0;color:var(--ink-soft);font-size:14.5px;font-style:italic}
+.passage{margin:14px 0 0;max-height:38vh;overflow:auto;border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;background:#fcfffc;font-size:15px}
+.passage p{margin:0 0 10px}
+.passage p:last-child{margin:0}
+.blank{display:inline-block;padding:0 5px;border-radius:6px;background:var(--tint);color:var(--ink-soft);font-weight:700}
+.blank.active{background:var(--neon);color:#033b12;box-shadow:0 0 12px rgba(45,255,79,.8)}
+.qtext{margin:16px 0 0;font-size:clamp(18px,4.6vw,21px);font-weight:600;white-space:pre-line;line-height:1.5}
+.qtext u{text-decoration:underline;text-decoration-color:var(--neon-deep);text-decoration-thickness:3px;text-underline-offset:3px}
+.blankq{margin:16px 0 0;font-size:18px;font-weight:700}
+.opts{display:grid;gap:10px;margin:20px 0 0;padding:0;list-style:none}
+.opt{
+  width:100%;text-align:left;display:flex;gap:12px;align-items:flex-start;
+  background:#fff;border:2px solid var(--line);border-radius:14px;padding:13px 14px;font-size:16.5px;
+  transition:border-color .12s, box-shadow .12s, background .12s;
+}
+.opt .l{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;background:var(--tint);color:var(--green-text);border:1.5px solid var(--line)}
+.opt:hover:not(:disabled){border-color:var(--neon-deep)}
+.opt.wrong{background:var(--red-bg);border-color:var(--red);box-shadow:0 0 0 2px rgba(255,46,67,.25),0 0 18px rgba(255,46,67,.45);pointer-events:none}
+.opt.wrong .l{background:var(--red);border-color:var(--red);color:#fff}
+.opt.right{background:#eaffee;border-color:var(--neon);box-shadow:var(--glow);pointer-events:none}
+.opt.right .l{background:var(--neon);border-color:var(--neon);color:#033b12}
+.opt.dim{opacity:.5;pointer-events:none}
+.shake{animation:shake .5s cubic-bezier(.36,.07,.19,.97) both}
+@keyframes shake{
+  10%,90%{transform:translateX(-2px)}20%,80%{transform:translateX(4px)}
+  30%,50%,70%{transform:translateX(-8px)}40%,60%{transform:translateX(8px)}
+}
+.ok{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.ok span{font-weight:700;color:var(--green-text)}
+.next,.big{
+  background:var(--neon);color:#033b12;border:0;border-radius:999px;padding:13px 26px;font-weight:800;font-size:16.5px;
+  box-shadow:0 0 0 2px var(--neon-deep) inset, 0 0 20px rgba(45,255,79,.7);
+}
+.next:hover,.big:hover{filter:brightness(1.05)}
+.next:active,.big:active{transform:scale(.97)}
+.pop{animation:pop .35s ease-out}
+@keyframes pop{0%{transform:scale(.9);opacity:0}100%{transform:scale(1);opacity:1}}
+
+/* ---------- Result ---------- */
+.res{text-align:center;padding-top:clamp(30px,9vh,90px)}
+.res h2{font-size:clamp(28px,7vw,42px);margin:0 0 6px;font-weight:800}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px 0}
+.stat{border:2px solid var(--line);border-radius:16px;padding:16px 8px;background:#fff}
+.stat b{display:block;font-size:clamp(22px,6vw,30px);font-weight:800;color:var(--green-text);font-variant-numeric:tabular-nums}
+.stat small{color:var(--ink-soft)}
+.res .big{margin:4px 6px}
+.res .ghost{background:#fff;border:2px solid var(--line);border-radius:999px;padding:12px 24px;font-weight:700;margin:4px 6px}
+.res .ghost:hover{border-color:var(--neon-deep)}
+
+.dlg{position:fixed;inset:0;z-index:50;background:rgba(8,48,26,.35);display:grid;place-items:center;padding:20px}
+.dlg .box{background:#fff;border:2px solid var(--neon);border-radius:18px;padding:20px;max-width:360px;width:100%;box-shadow:var(--glow)}
+.dlg p{margin:0 0 16px}
+.dlg .btns{display:flex;gap:10px;justify-content:flex-end}
+.ghost2{background:#fff;border:2px solid var(--line);border-radius:999px;padding:11px 22px;font-weight:700}
+.ghost2:hover{border-color:var(--neon-deep)}
+.dlg .next{padding:11px 22px}
+@media (prefers-reduced-motion: reduce){
+  .shake{animation:none}
+  .timebar i,.prog i{transition:none}
+  .timebar.over i,.pop{animation:none}
+}
+</style>
+</head>
+<body>
+
+<main id="home" class="wrap home">
+  <h1>Ôn tập giữa kì I<br>Tiếng Anh 11</h1>
+  <p class="sub">Global Success · Unit 2 và Unit 3. Chọn phần muốn luyện rồi làm từng câu một.</p>
+  <div class="pick" id="pick"></div>
+  <div class="rules">Chọn sai: đáp án đó sẽ đỏ và rung rồi biến mất, bạn chọn lại. Chỉ khi chọn đúng mới có nút sang câu tiếp theo.</div>
+</main>
+
+<section id="quiz" hidden>
+  <div class="top"><div class="in">
+    <div class="row">
+      <span id="counter">Câu 1 / 1</span>
+      <span>Tổng: <span class="clock" id="total">00:00</span></span>
+      <button class="quit" id="quit" type="button">Thoát</button>
+    </div>
+    <div class="timebar" id="timebar" role="progressbar" aria-label="Thời gian làm câu này"><i id="timefill"></i></div>
+    <div class="tlabel"><span>Thời gian câu này</span><span class="clock" id="qtime">00:00</span></div>
+    <div class="prog"><i id="progfill"></i></div>
+  </div></div>
+  <div class="wrap" style="padding-top:0">
+    <div class="card" id="card"></div>
+  </div>
+</section>
+
+<div id="dlg" class="dlg" hidden>
+  <div class="box" role="dialog" aria-modal="true" aria-labelledby="dlgT">
+    <p id="dlgT"><b>Thoát phần đang làm?</b><br>Tiến độ và thời gian hiện tại sẽ không được lưu.</p>
+    <div class="btns"><button type="button" class="ghost2" id="stay">Ở lại</button><button type="button" class="next" id="leave">Thoát</button></div>
+  </div>
+</div>
+
+<main id="result" class="wrap res" hidden>
+  <h2>Hoàn thành!</h2>
+  <p class="sub" id="resSub" style="color:var(--ink-soft);margin:0"></p>
+  <div class="stats">
+    <div class="stat"><b id="rTime">0</b><small>Tổng thời gian</small></div>
+    <div class="stat"><b id="rFirst">0</b><small>Đúng ngay lần đầu</small></div>
+    <div class="stat"><b id="rWrong">0</b><small>Lần chọn sai</small></div>
+  </div>
+  <button class="big" id="again" type="button">Làm lại</button>
+  <button class="ghost" id="homeBtn" type="button">Về trang chủ</button>
+</main>
+
+<script>
+const DATA = {"qs": [{"u": 2, "s": "Getting Started", "n": 1, "i": "", "q": "The teacher praised Lan for her good __________ in class.", "o": ["respect", "behavior", "force", "footstep"], "a": 1}, {"u": 2, "s": "Getting Started", "n": 2, "i": "", "q": "My little brother is always polite and obedient. He is a __________ child.", "o": ["forceful", "respective", "well-behaved", "behaved"], "a": 2}, {"u": 2, "s": "Getting Started", "n": 3, "i": "", "q": "Students should show __________ to their teachers and parents.", "o": ["behavior", "force", "respect", "footsteps"], "a": 2}, {"u": 2, "s": "Getting Started", "n": 4, "i": "", "q": "The __________ between parents and teenagers often leads to misunderstandings.", "o": ["generation gap", "behavior", "respect", "force"], "a": 0}, {"u": 2, "s": "Getting Started", "n": 5, "i": "", "q": "His face remained ______, so no one knew what he was thinking.", "o": ["expressionless", "expression", "express", "expressive"], "a": 0}, {"u": 2, "s": "Getting Started", "n": 6, "i": "", "q": "The students were very ______ during the school trip.", "o": ["behaviour", "behave", "well-behaved", "behaviourally"], "a": 2}, {"u": 2, "s": "Getting Started", "n": 7, "i": "", "q": "It's cold outside. You ______ wear a warm jacket.", "o": ["should", "can", "might", "would"], "a": 0}, {"u": 2, "s": "Getting Started", "n": 8, "i": "", "q": "We ______ get up early tomorrow because we have an important exam.", "o": ["needn’t", "may", "have to", "can"], "a": 2}, {"u": 2, "s": "Getting Started", "n": 9, "i": "Chọn từ/cụm từ GẦN NGHĨA nhất.", "q": "Please <u>share</u> this document with all members of your group.", "o": ["distribute", "collect", "delete", "borrow"], "a": 0}, {"u": 2, "s": "Getting Started", "n": 10, "i": "Chọn từ/cụm từ TRÁI NGHĨA.", "q": "The police managed to <u>hold</u> the suspect until more officers arrived.", "o": ["arrest", "detain", "stop", "release"], "a": 3}, {"u": 2, "s": "Language", "n": 1, "i": "", "q": "Students _______ cheat in the exams; it is against the rules.", "o": ["must", "have to", "don't have to", "mustn't"], "a": 3}, {"u": 2, "s": "Language", "n": 2, "i": "", "q": "Students _______ go to school on Sundays; there is no class then.", "o": ["must", "have to", "don't have to", "mustn't"], "a": 2}, {"u": 2, "s": "Language", "n": 3, "i": "", "q": "This is a closed-book exam, so you _______ use any reference books in the examination room.", "o": ["must", "have to", "don't have to", "mustn't"], "a": 3}, {"u": 2, "s": "Language", "n": 4, "i": "", "q": "All students _______ wear uniforms at school because it is a rule.", "o": ["should", "have to", "ought to", "must"], "a": 1}, {"u": 2, "s": "Language", "n": 5, "i": "", "q": "My car broke down yesterday, so I _______ catch a taxi to the office.", "o": ["have to", "had better", "had to", "has to"], "a": 2}, {"u": 2, "s": "Reading", "n": 1, "i": "", "q": "Her shouting attracted some _______ glances from other people in the restaurant.", "o": ["curious", "wide", "traditional", "cultural"], "a": 0}, {"u": 2, "s": "Reading", "n": 2, "i": "", "q": "Personal computers are nearly as _______ in American homes as televisions.", "o": ["common", "popular", "prominent", "dominant"], "a": 0}, {"u": 2, "s": "Reading", "n": 3, "i": "", "q": "Anyone _______ have a passport, even a visa when travelling all around the world.", "o": ["ought to", "must", "should", "has to"], "a": 3}, {"u": 2, "s": "Reading", "n": 4, "i": "", "q": "In the peak season, travellers _______ book their accommodation in advance.", "o": ["have to", "must", "should", "ought"], "a": 0}, {"u": 2, "s": "Reading", "n": 5, "i": "", "q": "I live in a/an ____ with my parents and my elder sister in the coastal area.", "o": ["extended family", "nuclear family", "extended house", "nuclear house"], "a": 1}, {"u": 2, "s": "Reading", "n": 6, "i": "", "q": "In my opinion, family members are responsible for ____.", "o": ["the housewife", "the chores", "homework", "furniture"], "a": 1}, {"u": 2, "s": "Reading", "n": 7, "i": "", "q": "You are old enough to take _______ for what you have done in some possible situations.", "o": ["responsible", "responsibility", "responsibly", "irresponsible"], "a": 1}, {"u": 2, "s": "Reading", "n": 8, "i": "", "q": "He was looking at his parents _______, waiting for recommendations.", "o": ["obey", "obedience", "obedient", "obediently"], "a": 3}, {"u": 2, "s": "Reading", "n": 9, "i": "", "q": "To many children, playing computer games is a form of ____.", "o": ["relax", "relaxingly", "relaxation", "relaxed"], "a": 2}, {"u": 2, "s": "Reading", "n": 10, "i": "", "q": "It is necessary for young people to consult their parents about their future careers.", "o": ["Young people don't have to consult their parents about their future careers.", "Young people ought not to consult their parents about their future careers.", "Young people should have consulted their parents about future careers.", "Young people must consult their parents about their future careers."], "a": 3}, {"u": 2, "s": "Reading", "n": 11, "i": "Chọn từ/cụm từ GẦN NGHĨA nhất.", "q": "Despite being a kid, Tuan always helps his mother do <u>the chores</u> every day.", "o": ["homework", "works", "housework", "house duties"], "a": 2}, {"u": 2, "s": "Reading", "n": 12, "i": "Chọn từ/cụm từ TRÁI NGHĨA.", "q": "If you live in an <u>extended family</u>, you'll have great joy and get support from other members.", "o": ["close family", "traditional family", "nuclear family", "large family"], "a": 2}, {"u": 2, "s": "Speaking", "n": 1, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "a. Alex: I'm going to join a study group.\n\nb. Alex: They make learning collaborative, and we can help each other.\n\nc. Rachel: How are you going to improve your math skills?\n\nd. Rachel: Study groups can be distracting. I might just study alone.\n\ne. Rachel: Why a study group?", "o": ["c-b-a-e-d", "c-a-e-b-d", "d-b-a-e-c", "d-e-a-b-c"], "a": 1}, {"u": 2, "s": "Speaking", "n": 2, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "a. Nam: Hi, Mark! Long time no see. You look so good!\n\nb. Nam: Yes, I have. I exercise every morning and eat more healthy food.\n\nc. Mark: Hi, Nam! Thanks. You look so fit, too. Have you worked out a lot lately?\n\n(Adapted from Global Success)", "o": ["c-a-b", "b-c-a", "c-b-a", "a-c-b"], "a": 3}, {"u": 2, "s": "Speaking", "n": 3, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "b. Sue: I'm going to try online classes.\n\na. Alex: Why online classes?\n\nc. Alex: How are you going to improve your English?\n\nd. Alex: I think online classes are too expensive. I don't think I'll try them.\n\ne. Sue: They improve our communication skills, and they have flexible schedules.\n\n(Adapted from i-Learn Smart World)", "o": ["c-b-a-e-d", "c-e-d-b-a", "d-b-a-e-c", "d-e-a-b-c"], "a": 0}, {"u": 2, "s": "Speaking", "n": 4, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "a. Sarah: Hey, Tom! It's been ages! You look amazing!\n\nb. Tom: Thanks, Sarah! I've been trying to stay active and eat healthier.\n\nc. Sarah: You definitely look fit! Have you been working out regularly?", "o": ["c - b - a", "a - b - c", "b - c - a", "a - c - b"], "a": 1}, {"u": 2, "s": "Speaking", "n": 5, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "a. Janna: Mum, can I go to my friend's birthday party this Saturday evening?\n\nb. Janna: It's Mai's birthday, Mum. Is it OK if I stay the night at her house after the party?\n\nc. Janna: OK, Mum. I'll be home before 10 p.m. then.\n\nd. Mum: Certainly. Whose birthday is it?\n\ne. Mum: Oh, I'm afraid not. You must come back home before 10 p.m. We're going to visit your grandparents early on Sunday morning.", "o": ["a - b - d - e - c", "a - b - d - c - e", "a - d - b - e - c", "a - d - b - c - e"], "a": 2}, {"u": 2, "s": "Listening", "n": 1, "i": "", "q": "Teenagers often _______ about strict rules set by their parents.", "o": ["complain", "complaint", "complaining", "complainant"], "a": 0}, {"u": 2, "s": "Listening", "n": 2, "i": "", "q": "Parents should be _______ their children's opinions and ideas.", "o": ["open for", "open with", "open to", "open on"], "a": 2}, {"u": 2, "s": "Listening", "n": 3, "i": "", "q": "Some parents are too _______ and do not allow their children to make their own decisions.", "o": ["control", "controlled", "controlling", "controllable"], "a": 2}, {"u": 2, "s": "Listening", "n": 4, "i": "", "q": "A lack of communication can widen the _______ between parents and teenagers.", "o": ["generation gap", "age difference", "family value", "household chore"], "a": 0}, {"u": 2, "s": "Listening", "n": 5, "i": "", "q": "Good communication helps family members _______ important issues.", "o": ["agree on", "agreeing with", "agreement to", "agreeable in"], "a": 0}, {"u": 2, "s": "Listening", "n": 6, "i": "", "q": "The counsellor suggested that parents should listen carefully to their children _______ judging them.", "o": ["before", "because", "although", "unless"], "a": 0}, {"u": 2, "s": "Listening", "n": 7, "i": "", "q": "Parents and teenagers should communicate regularly to _______.", "o": ["make the generation gap", "bridge the generation gap", "create the generation gap", "control the generation gap"], "a": 1}, {"u": 2, "s": "Listening", "n": 8, "i": "", "q": "Teenagers ____________ listen to their parents because they feel respected and understood.", "o": ["are less likely with", "are more likely to", "are more likely with", "are less likely to"], "a": 1}, {"u": 2, "s": "Listening", "n": 9, "i": "", "q": "Which phrasal verb best completes the sentence?\n\nParents sometimes _______ their children's privileges if they break family rules.", "o": ["take away", "take up", "take after", "take over"], "a": 0}, {"u": 2, "s": "Listening", "n": 10, "i": "", "q": "Teenagers often feel stressed when they have _______ with their parents about personal choices.", "o": ["family limits", "family controls", "family conflicts", "family agreements"], "a": 2}, {"u": 2, "s": "Listening", "n": 11, "i": "", "q": "After a long discussion, both parents and children finally managed to _______.", "o": ["reach an agreement", "take an agreement", "build an agreement", "hold an agreement"], "a": 0}, {"u": 2, "s": "Listening", "n": 12, "i": "Chọn từ/cụm từ GẦN NGHĨA nhất.", "q": "Which word is <u>closest</u> in meaning to \"<u>complain</u>\"?\n\nSome customers began to <u>complain</u> about the slow service at the restaurant.", "o": ["praise", "protest", "support", "celebrate"], "a": 1}, {"u": 2, "s": "Listening", "n": 13, "i": "Chọn từ/cụm từ TRÁI NGHĨA.", "q": "Which word is <u>opposite</u> in meaning to \"<u>limitations</u>\"?\n\nThe new device has several </u>limitations, especially in battery life.", "o": ["advantages", "weaknesses", "shortages", "restrictions"], "a": 0}, {"u": 2, "s": "Writing", "n": 1, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "Arrange the following sentences to make a complete paragraph about reducing plastic waste.\n\na. For example, they can use reusable bags and water bottles.\nb. Reducing plastic waste is very important for environmental protection.\nc. These simple actions can make a big difference.\nd. There are several ways students can help.", "o": ["b – d – a – c", "d – b – a – c", "b – a – d – c", "a – b – d – c"], "a": 0}, {"u": 2, "s": "Writing", "n": 2, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "Arrange the following parts of an email giving environmental advice.\n\na. I hope my suggestions will be useful.\nb. Dear Nam,\nc. You should recycle more and avoid using single-use plastic products.\nd. I'm happy to hear that you want to protect the environment.", "o": ["b – d – c – a", "d – b – c – a", "b – c – d – a", "d – c – b – a"], "a": 0}, {"u": 2, "s": "Writing", "n": 3, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "Arrange the following sentences to make a paragraph about a clean-up campaign.\n\na. As a result, the park became much cleaner.\nb. Last Sunday, our class took part in a clean-up campaign.\nc. We collected rubbish and planted trees in the local park.\nd. Everyone felt proud of their contribution.", "o": ["b – c – a – d", "c – b – a – d", "b – a – c – d", "c – a – b – d"], "a": 0}, {"u": 2, "s": "Writing", "n": 4, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "Arrange the following parts of an informal letter.\n\na. Best wishes,\nb. I think you should join the Green Club at school.\n\nc. Dear Lan,\nd. It helps students learn more about environmental protection.\ne. Minh", "o": ["c – b – d – a – e", "b – c – d – a – e", "c – d – b – a – e", "b – d – c – a – e"], "a": 0}, {"u": 2, "s": "Writing", "n": 5, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "Arrange the following sentences to make a coherent paragraph.\n\na. Secondly, we should save electricity and water.\nb. In conclusion, everyone should take action to protect the environment.\nc. There are many ways to protect the environment.\nd. Firstly, we should reduce, reuse, and recycle waste.", "o": ["c – a – d – b", "c – d – a – b", "d – c – a – b", "c – d – b – a"], "a": 1}, {"u": 2, "s": "Writing", "n": 6, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "Arrange the following parts of an email to a friend.\n\na. Write back and tell me about your ideas.\nb. Dear Hoa,\nc. Last weekend, I joined a waste reduction programme in my neighbourhood.\nd. It was a great experience because I learned how to sort rubbish properly.\ne. Best wishes, Nam", "o": ["b – c – d – a – e", "c – b – d – a – e", "b – d – c – a – e", "c – d – b – a – e"], "a": 0}, {"u": 2, "s": "Looking Back", "n": 1, "i": "", "q": "In the past, women _______ do all the housework as part of their duties.", "o": ["had to", "must", "shouldn’t", "mustn't"], "a": 0}, {"u": 2, "s": "Looking Back", "n": 2, "i": "", "q": "Parents should limit screen time to prevent their children from _____up late.", "o": ["to stay", "stay", "staying", "stayed"], "a": 2}, {"u": 2, "s": "Looking Back", "n": 3, "i": "", "q": "Too much screen time is very bad _______ teenagers' health and eyesight.", "o": ["for", "with", "at", "on"], "a": 0}, {"u": 2, "s": "Looking Back", "n": 4, "i": "", "q": "Older generations often keep _______ their traditional lifestyle and culture.", "o": ["practise", "to practise", "practising", "practised"], "a": 2}, {"u": 2, "s": "Looking Back", "n": 5, "i": "", "q": "We _______ wear uniforms on weekdays because it is a strict school rule.", "o": ["don't have to", "have to", "should", "mustn't"], "a": 1}, {"u": 2, "s": "Looking Back", "n": 6, "i": "", "q": "Young people should be open _______ new ways of thinking.", "o": ["for", "from", "to", "up"], "a": 2}, {"u": 2, "s": "Looking Back", "n": 7, "i": "", "q": "Do you mind if I _______ home early tonight?", "o": ["go", "went", "going", "to go"], "a": 0}, {"u": 2, "s": "Looking Back", "n": 8, "i": "", "q": "Would you mind if I _______ your car tomorrow?", "o": ["borrow", "borrowed", "borrowing", "to go"], "a": 1}, {"u": 2, "s": "Looking Back", "n": 9, "i": "", "q": "Her strict parents do not allow her _______ tight jeans to school.", "o": ["wear", "to wear", "wearing", "wore"], "a": 1}, {"u": 2, "s": "Looking Back", "n": 10, "i": "", "q": "Oh, it is already 10 p.m. I _______ go home right now.", "o": ["must", "mustn't", "don't have to", "had to"], "a": 0}, {"u": 2, "s": "Looking Back", "n": 11, "i": "", "q": "Many Asian American children have cultural values different _______ those of their parents.", "o": ["in", "with", "from", "for"], "a": 2}, {"u": 2, "s": "Looking Back", "n": 12, "i": "", "q": "You _______ behave rudely towards older people under any circumstances.", "o": ["should", "have to", "don't have to", "mustn't"], "a": 3}, {"u": 2, "s": "Looking Back", "n": 13, "i": "", "q": "Asian American parents may fail to have their children _______ the family traditions.", "o": ["follow", "to follow", "to following", "followed"], "a": 0}, {"u": 2, "s": "Looking Back", "n": 14, "i": "", "q": "Students are allowed to wear casual clothes to school today, so they _______ wear their uniforms.", "o": ["don't have to", "must", "have to", "mustn't"], "a": 0}, {"u": 2, "s": "Looking Back", "n": 15, "i": "", "q": "_______ their different attitudes to the new culture, Asian American children may have different values.", "o": ["Because", "Although", "Due to", "Despite"], "a": 2}, {"u": 2, "s": "Looking Back", "n": 16, "i": "", "q": "Asian American children may not do what they are expected _______ by their parents.", "o": ["do", "to do", "doing", "done"], "a": 1}, {"u": 2, "s": "Text Completion", "n": 1, "i": "", "q": "", "o": ["diagnose English proficiency levels", "diagnosing English proficiency levels", "to diagnosing English proficiency levels", "to diagnose English proficiency levels"], "a": 1, "p": "2-1"}, {"u": 2, "s": "Text Completion", "n": 2, "i": "", "q": "", "o": ["while having minimised", "while they have been minimising", "while minimise", "while minimising"], "a": 3, "p": "2-1"}, {"u": 2, "s": "Text Completion", "n": 3, "i": "", "q": "", "o": ["how the chatbot is being utilised", "how is the chatbot utilised", "how to be the chatbot utilised", "how utilised the chatbot is being"], "a": 0, "p": "2-1"}, {"u": 2, "s": "Text Completion", "n": 4, "i": "", "q": "", "o": ["thereby connecting key information to them", "by connecting key information about them", "despite connecting them to key information", "by connecting them to key information"], "a": 3, "p": "2-1"}, {"u": 2, "s": "Text Completion", "n": 5, "i": "", "q": "", "o": ["receive answers immediately", "not receiving answers immediately", "will receive answers immediately", "will not receive answers immediately"], "a": 0, "p": "2-1"}, {"u": 2, "s": "Text Completion", "n": 6, "i": "", "q": "", "o": ["What a chatbot for memorization tasks can be a helpful resource", "A chatbot can be a helpful resource for memorization tasks", "A chatbot for a helpful resource can be memorization tasks", "Making a chatbot for memorization tasks be a helpful resource"], "a": 1, "p": "2-1"}, {"u": 2, "s": "Text Completion", "n": 7, "i": "", "q": "", "o": ["The chatbot will not tire as students do not use it repeatedly", "The chatbot will tire as students use it repeatedly", "The chatbot will not tire as students use it repeatedly", "The chatbot will tire as students do not use it repeatedly"], "a": 2, "p": "2-1"}, {"u": 2, "s": "Text Completion", "n": 8, "i": "", "q": "", "o": ["its own pace", "our own pace", "their own pace", "your own pace"], "a": 2, "p": "2-1"}, {"u": 2, "s": "Text Completion", "n": 1, "i": "", "q": "", "o": ["With AI-powered machines and manufacturers, robots can minimise human errors", "With AI-powered machines and robots, manufacturers can minimise human errors", "With human errors, manufacturers can minimise AI-powered machines and robots", "With manufacturers, AI-powered machines and robots can minimise human errors"], "a": 1, "p": "2-2"}, {"u": 2, "s": "Text Completion", "n": 2, "i": "", "q": "", "o": ["to be associated with reworking or returns", "associating with reworking or returns", "associated with reworking or returns", "to associate with reworking or returns"], "a": 2, "p": "2-2"}, {"u": 2, "s": "Text Completion", "n": 3, "i": "", "q": "", "o": ["preventing reaching consumers from low-quality products", "preventing low-quality products from reaching consumers", "prevent reaching consumers from low-quality products", "prevent low-quality products from reaching consumers"], "a": 3, "p": "2-2"}, {"u": 2, "s": "Text Completion", "n": 4, "i": "", "q": "", "o": ["its capacity", "our capacity", "their capacity", "his capacity"], "a": 0, "p": "2-2"}, {"u": 2, "s": "Text Completion", "n": 5, "i": "", "q": "", "o": ["might otherwise go unnoticed by humans", "that might otherwise go unnoticed by humans", "that humans might otherwise go unnoticed them", "humans might otherwise go unnoticed"], "a": 1, "p": "2-2"}, {"u": 2, "s": "Text Completion", "n": 6, "i": "", "q": "", "o": ["Despite making use of the power of AI", "By making use of AI of the power", "By making use of the power of AI", "Due to making use of AI of the power"], "a": 2, "p": "2-2"}, {"u": 3, "s": "Getting Started", "n": 1, "i": "", "q": "Many children went to the science _______ to see beautiful pictures and models of future cities.", "o": ["infrastructure", "exhibition", "sensor", "footprint"], "a": 1}, {"u": 3, "s": "Getting Started", "n": 2, "i": "", "q": "New AI technologies can help the smart city to operate more _______.", "o": ["efficient", "efficiency", "efficiently", "inefficient"], "a": 2}, {"u": 3, "s": "Getting Started", "n": 3, "i": "", "q": "Taking public transport instead of driving helps people reduce their carbon _______.", "o": ["track", "step", "mark", "footprint"], "a": 3}, {"u": 3, "s": "Getting Started", "n": 4, "i": "", "q": "More than fifty per cent of this future city is made _______ of green areas.", "o": ["up", "from", "out", "off"], "a": 0}, {"u": 3, "s": "Getting Started", "n": 5, "i": "", "q": "Many citizens prefer buses, _______ Mr. Nam still drives his private vehicle to work.", "o": ["so", "because", "but", "or"], "a": 2}, {"u": 3, "s": "Getting Started", "n": 6, "i": "", "q": "To reduce traffic jams, the town introduced electric buses and _______.", "o": ["models", "trams", "buildings", "sensors"], "a": 1}, {"u": 3, "s": "Getting Started", "n": 7, "i": "", "q": "Overpopulation in this big city has caused severe _______ problems for low-income residents.", "o": ["household", "housing", "houseful", "housed"], "a": 1}, {"u": 3, "s": "Getting Started", "n": 8, "i": "", "q": "Using renewable energy is a great way to solve an environmental _______.", "o": ["problem", "question", "duty", "task"], "a": 0}, {"u": 3, "s": "Getting Started", "n": 9, "i": "", "q": "Visually, Mai was really impressed _______ the beautiful high-rise buildings in the city.", "o": ["on", "at", "for", "with"], "a": 3}, {"u": 3, "s": "Getting Started", "n": 10, "i": "", "q": "To build a green community, every city _______ should minimize waste and save clean water.", "o": ["dweller", "infrastructure", "vehicle", "sensor"], "a": 0}, {"u": 3, "s": "Getting Started", "n": 11, "i": "", "q": "Carbon emissions from traffic have caused severe _______ damage to the metropolitan area.", "o": ["environment", "environmental", "environmentally", "environmentalist"], "a": 1}, {"u": 3, "s": "Getting Started", "n": 12, "i": "", "q": "The technician installed a smart _______ to monitor the changes in street temperature.", "o": ["vehicle", "model", "sensor", "tram"], "a": 2}, {"u": 3, "s": "Getting Started", "n": 13, "i": "", "q": "The central streets are narrow, _______ local planners want to expand the urban area.", "o": ["so", "although", "but", "since"], "a": 0}, {"u": 3, "s": "Getting Started", "n": 14, "i": "Chọn từ/cụm từ GẦN NGHĨA nhất.", "q": "The mayor introduced a <u>modern</u> traffic management system to reduce travel time during rush hours.", "o": ["old", "private", "advanced", "crowded"], "a": 2}, {"u": 3, "s": "Getting Started", "n": 15, "i": "Chọn từ/cụm từ TRÁI NGHĨA.", "q": "Building too many houses in the suburbs may <u>worsen</u> local traffic problems.", "o": ["increase", "improve", "cause", "damage"], "a": 1}, {"u": 3, "s": "Language", "n": 1, "i": "", "q": "The weather _______ warmer now as summer approaches.", "o": ["looks", "tastes", "becomes", "sounds"], "a": 2}, {"u": 3, "s": "Language", "n": 2, "i": "", "q": "I _______ that using electric buses is a great idea to protect our environment.", "o": ["am thinking", "think", "are thinking", "thinks"], "a": 1}, {"u": 3, "s": "Language", "n": 3, "i": "", "q": "Look at the garden! It looks ________in the morning sun.", "o": ["beautiful", "beautifully", "beauty", "beautify"], "a": 0}, {"u": 3, "s": "Language", "n": 4, "i": "", "q": "At the moment, my parents _______ of buying a new apartment near the city park.", "o": ["think", "are thinking", "is thinking", "thinks"], "a": 1}, {"u": 3, "s": "Language", "n": 5, "i": "", "q": "The sky is dark and those big clouds seem  _____ a heavy rain.", "o": ["promised", "promising", "promise", "to promise"], "a": 3}, {"u": 3, "s": "Language", "n": 6, "i": "", "q": "I _______ the high tower clearly because it is too far away.", "o": ["am not seeing", "don't see", "am seeing", "doesn't see"], "a": 1}, {"u": 3, "s": "Language", "n": 7, "i": "", "q": "Building a new path for bicycles sounds _______ to all students in this area.", "o": ["great", "greatly", "greatness", "greatest"], "a": 0}, {"u": 3, "s": "Language", "n": 8, "i": "", "q": "Listen! Your new song _______ very nice and catchy.", "o": ["sounded", "is sounding", "sounds", "sound"], "a": 2}, {"u": 3, "s": "Language", "n": 9, "i": "", "q": "The chef _______ the tomato soup right now to see if it needs salt.", "o": ["is tasting", "tastes", "taste", "are tasting"], "a": 0}, {"u": 3, "s": "Language", "n": 10, "i": "", "q": "These fresh lemons _______ very sour but they are good for your health.", "o": ["are tasting", "tastes", "taste", "is tasting"], "a": 2}, {"u": 3, "s": "Reading", "n": 1, "i": "", "q": "Smart cities use advanced technology to help local authorities ______ traffic problems and reduce congestion.", "o": ["depend on", "cope with", "result in", "suffer from"], "a": 1}, {"u": 3, "s": "Reading", "n": 2, "i": "", "q": "The new shopping centre offers ______ services, including restaurants, cinemas, and fitness facilities.", "o": ["a range of", "a lack of", "a shortage of", "a piece of"], "a": 0}, {"u": 3, "s": "Reading", "n": 3, "i": "", "q": "Scientists are using artificial intelligence to ______ extreme weather events more accurately.", "o": ["prevent", "observe", "predict", "control"], "a": 2}, {"u": 3, "s": "Reading", "n": 4, "i": "", "q": "The weather forecast ______  the possibility of severe flooding in low-lying areas.", "o": ["informed residents with", "warned residents of", "persuaded residents about", "explained residents to"], "a": 1}, {"u": 3, "s": "Reading", "n": 5, "i": "", "q": "Smart traffic systems help cities ______ by reducing delays and optimizing traffic flow.", "o": ["work less carefully", "develop slowly", "operate more efficiently", "expand rapidly"], "a": 2}, {"u": 3, "s": "Reading", "n": 6, "i": "", "q": "A temperature ______ can automatically detect changes in weather conditions and send data to a control centre.", "o": ["generator", "sensor", "processor", "monitor"], "a": 1}, {"u": 3, "s": "Reading", "n": 7, "i": "", "q": "To save electricity, people should remember to ______ the lights when leaving a room.", "o": ["switch on", "turn off", "put up", "bring back"], "a": 1}, {"u": 3, "s": "Reading", "n": 8, "i": "", "q": "The city government plans to remove several old buildings to ______ new parks and public spaces.", "o": ["take care of", "make room for", "put pressure on", "keep track of"], "a": 1}, {"u": 3, "s": "Reading", "n": 9, "i": "Chọn từ/cụm từ GẦN NGHĨA nhất.", "q": "Modern public transport systems can make cities more <u>liveable</u> for residents.", "o": ["comfortable to live in", "crowded and noisy", "difficult to manage", "expensive to maintain"], "a": 0}, {"u": 3, "s": "Reading", "n": 10, "i": "Chọn từ/cụm từ TRÁI NGHĨA.", "q": "Many experts believe that modern technology can help cities <u>operate more efficiently</u> and provide better public services.", "o": ["function more effectively", "run more smoothly", "work less effectively", "perform better"], "a": 2}, {"u": 3, "s": "Speaking", "n": 1, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "a. Andrew: That's interesting. How will they improve transportation?\nb. Martin: I think cities of the future will use more smart technology.\nc. Martin: For example, smart traffic systems can reduce traffic jams. They will help vehicles move more efficiently and safely.\nd. Andrew: That sounds like a great way to make cities more liveable.", "o": ["b-a-c-d", "a-b-c-d", "b-c-a-d", "b-c-a-d"], "a": 0}, {"u": 3, "s": "Speaking", "n": 2, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "a. Magaret: I agree. They can also help reduce gas emissions.\nb. Magaret: : What changes do you expect to see in future cities?\nc. Tom: More people may use eco-friendly public transport instead of private cars.\nd. Tom: That's true. Cleaner transportation will improve air quality. Do you think so?\ne. Magaret: Yes. It will also make cities healthier places to live.", "o": ["b-c-a-d-e", "b-a-c-d-e", "c-b-a-d-e", "b-e-d-a-c"], "a": 0}, {"u": 3, "s": "Speaking", "n": 3, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "a. Tim: Really? How can they do that?\nb. Mary: I read that green skyscrapers may become more common in the future.\nc. Mary: They can use plants and energy-saving systems to protect the environment.\nd. Tim: That's impressive. They seem both modern and sustainable.\ne. Mary: Uhm, they can also make cities more attractive.", "o": ["b-e-a-d-c", "b-a-c-d-e", "a-b-c-d-e", "b-a-d-c-e"], "a": 1}, {"u": 3, "s": "Speaking", "n": 4, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "a. Alice: They can collect data about traffic, weather, and energy use.\nb. Alice: I think sensors will play an important role in future cities.\nc. Susan: That sounds useful. What can they be used for?\nd. Susan: Do you think city services can operate more efficiently?\ne. Alice: Sure! Technology will certainly make urban life more convenient.", "o": ["b-c-a-d-e", "b-d-c-a-e", "a-c-b-d-e", "a-b-d-c-e"], "a": 0}, {"u": 3, "s": "Speaking", "n": 5, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "a. Mary: They should create more pedestrian zones and public parks.\nb. Daisy: What do you think city planners should do to improve future cities?\nc. Daisy: I agree. Such spaces can encourage people to walk more.\nd. Mary: They can also provide areas for relaxation and community activities. Do you think so?\ne. Daisy: Yes. That would benefit both people's health and the environment.", "o": ["b-a-d-c-e", "a-b-c-d-e", "b-a-c-d-e", "b-c-a-d-e"], "a": 2}, {"u": 3, "s": "Listening", "n": 1, "i": "", "q": "Online learning platforms allow students to ______ teachers and classmates from different parts of the world.", "o": ["interact with", "depend on", "suffer from", "belong to"], "a": 0}, {"u": 3, "s": "Listening", "n": 2, "i": "", "q": "Social media has changed the way people communicate, increasing the level of ______ among users.", "o": ["competition", "interaction", "pollution", "isolation"], "a": 1}, {"u": 3, "s": "Listening", "n": 3, "i": "", "q": "The new mobile application is designed to ______ users to access educational materials anytime and anywhere.", "o": ["force", "enable", "persuade", "remind"], "a": 1}, {"u": 3, "s": "Listening", "n": 4, "i": "", "q": "Modern educational software allows students to learn more ______ through games and simulations.", "o": ["carefully", "interactively", "passively", "dependently"], "a": 1}, {"u": 3, "s": "Listening", "n": 5, "i": "", "q": "Volunteering activities can help strengthen a ______ among local residents.", "o": ["sense of humor", "sense of direction", "sense of community", "sense of adventure"], "a": 2}, {"u": 3, "s": "Listening", "n": 6, "i": "", "q": "It may take international students some time to ______ the local culture and customs.", "o": ["get familiar with", "take advantage of", "run out of", "put up with"], "a": 0}, {"u": 3, "s": "Listening", "n": 7, "i": "", "q": "After several weeks in the new school, Lan became more ______ with her classmates and teachers.", "o": ["interested", "familiar", "confident", "careful"], "a": 1}, {"u": 3, "s": "Listening", "n": 8, "i": "", "q": "When students first begin studying a new subject, they are often ______ with academic terms, which can make them feel under a lot of pressure.", "o": ["familiar", "comfortable", "unfamiliar", "satisfied"], "a": 2}, {"u": 3, "s": "Listening", "n": 9, "i": "Chọn từ/cụm từ GẦN NGHĨA nhất.", "q": "Video conferencing enables employees to communicate <u>face to face</u> even when they are in different countries.", "o": ["directly", "secretly", "frequently", "formally"], "a": 0}, {"u": 3, "s": "Listening", "n": 10, "i": "Chọn từ/cụm từ TRÁI NGHĨA.", "q": "Scholarship programmes can <u>enable</u> disadvantaged students to continue their education.", "o": ["allow", "assist", "encourage", "prevent"], "a": 3}, {"u": 3, "s": "Writing", "n": 1, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "Dear Mr. Thompson,\n\na. I sincerely apologize for the inconvenience you faced and appreciate your patience as we work through the issue.\n\nb. I would like to offer a solution that includes a discount on your next service as a gesture of goodwill.\n\nc. Your feedback is invaluable to us, and we are currently reviewing your case to ensure that we can improve and prevent similar situations in the future.\n\nd. If you have any further questions or concerns, please feel free to reach out - I’m here to help!\n\ne. Thank you for reaching out and sharing your concerns regarding your recent experience with our service.\n\nBest regards, Emily", "o": ["e - b - a - c - d", "e - b - c - a - d", "e - a - c - b - d", "e - c - d - a - b"], "a": 2}, {"u": 3, "s": "Writing", "n": 2, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "a. However, despite the economic boom, environmental concerns about beach erosion and overdevelopment remain prominent.\n\nb. Once quiet, undeveloped beach areas along the coast have been replaced by luxury resorts and condos, marking a shift towards tourism and real estate development.\n\nc. This boom in development has attracted international investors, leading to new hotels, restaurants and tourist attractions.\n\nd. The coastal city has undergone dramatic changes over the past few years.\n\ne. The population has exploded as more people move to the area to work in the tourism and construction industries.", "o": ["d – c – a – b – e", "d – a – e – b – c", "e – d – b – c – a", "d – b – c – e – a"], "a": 3}, {"u": 3, "s": "Writing", "n": 3, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "Dear Grandpa and Grandma,\n\na. I believe his story could teach me a lot about resilience and strength.\n\nb. I hope you're both doing well, and I've been thinking a lot about Grandpa and his life lately.\n\nc. I would love to hear more about his younger years, especially how he overcame the challenges of poverty and war.\n\nd. Any memories or lessons you could share would mean a lot to me as I navigate my own path.\n\ne. What values did he hold dear, and how did he view family, work, and life?\n\nWith love,\n\nAlex", "o": ["c – e – a – b – d", "b – c – e – a – d", "b – c – e – d – a", "b – d – e – a – c"], "a": 1}, {"u": 3, "s": "Writing", "n": 4, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "a. From the moment I arrived, they welcomed me like a member of their own family, making me feel at home in a completely new environment.\n\nb. Overall, staying with a host family not only enriched my understanding of their way of life but also created lasting memories and friendships that I will always cherish.\n\nc. Staying with a host family during my trip abroad was an unforgettable experience that gave me a unique opportunity to immerse myself in a new culture.\n\nd. Living with locals also allowed me to improve my language skills quickly, as I had daily conversations and picked up phrases that textbooks could never teach.\n\ne. Sharing meals together was one of the highlights, as I got to taste authentic homemade dishes while learning about their culture and traditions.", "o": ["d – c - e – a – b", "a – d – c – e – b", "e – a – b – c – b", "c – a – e – d – b"], "a": 3}, {"u": 3, "s": "Writing", "n": 5, "i": "Sắp xếp các câu thành đoạn/hội thoại hoàn chỉnh.", "q": "a. Firstly, festivals are a great way to understand a nation's culture.\n\nb. Nowadays, more and more young people celebrate Western festivals in Viet Nam.\n\nc. Taking part in celebrations can help young people learn more about other people's traditions and customs.\n\nd. They give an opportunity for young people to relax and spend enjoyable time with their friends and family.\n\ne. In conclusion, they can have fun, broaden their cultural knowledge and enjoy their school life more.\n\nf. Secondly, festivals are special events that help bring fun, happiness and joy to young people's lives.", "o": ["c – a – d – e – b – f", "b – a – c – f – d – e", "b – a – c – d – f – e", "c – e – b – d – f – a"], "a": 1}, {"u": 3, "s": "Looking Back", "n": 1, "i": "", "q": "They stopped ______ because it started to rain.", "o": ["playing", "play", "to play", "played"], "a": 0}, {"u": 3, "s": "Looking Back", "n": 2, "i": "", "q": "February is ______ month of the year.", "o": ["short", "shorter", "the shortest", "shortest"], "a": 2}, {"u": 3, "s": "Looking Back", "n": 3, "i": "", "q": "The visitors were impressed ______ the beautiful scenery.", "o": ["for", "with", "up", "on"], "a": 1}, {"u": 3, "s": "Looking Back", "n": 4, "i": "", "q": "The letters ______ tomorrow.", "o": ["send", "sent", "will send", "will be sent"], "a": 3}, {"u": 3, "s": "Looking Back", "n": 5, "i": "", "q": "What do you think ______ the idea of learning online?", "o": ["of", "up", "on", "in"], "a": 0}, {"u": 3, "s": "Text Completion", "n": 1, "i": "", "q": "", "o": ["being captivated millions of users worldwide", "to captivate millions of users worldwide", "captivate millions of users worldwide", "captivating millions of users worldwide"], "a": 3, "p": "3-1"}, {"u": 3, "s": "Text Completion", "n": 2, "i": "", "q": "", "o": ["developing by the Chinese company ByteDance", "developed by the Chinese company ByteDance", "to develop by the Chinese company ByteDance", "develop by the Chinese company ByteDance"], "a": 1, "p": "3-1"}, {"u": 3, "s": "Text Completion", "n": 3, "i": "", "q": "", "o": ["to a wide range of users", "in a wide range of users", "to a wide range for users", "in a wide range for users"], "a": 0, "p": "3-1"}, {"u": 3, "s": "Text Completion", "n": 4, "i": "", "q": "", "o": ["which users spend countless hours scrolling through an endless stream of videos", "why users spend countless hours scrolling through an endless stream of videos", "where users spend countless hours scrolling through an endless stream of videos", "when users spend countless hours scrolling through an endless stream of videos"], "a": 2, "p": "3-1"}, {"u": 3, "s": "Text Completion", "n": 5, "i": "", "q": "", "o": ["provide a platform for creativity and self-expression in an unprecedented scale", "providing a platform for creativity and self-expression in an unprecedented scale", "provide a platform for creativity and self-expression on an unprecedented scale", "providing a platform for creativity and self-expression on an unprecedented scale"], "a": 3, "p": "3-1"}, {"u": 3, "s": "Text Completion", "n": 6, "i": "", "q": "", "o": ["a person feed", "a personalised feed", "a personalisation feed", "a personalising feed"], "a": 1, "p": "3-1"}, {"u": 3, "s": "Text Completion", "n": 7, "i": "", "q": "", "o": ["TikTok keeps users to engage", "TikTok keeps users engage", "TikTok keeps users engaged", "TikTok keeps users engaging"], "a": 2, "p": "3-1"}, {"u": 3, "s": "Text Completion", "n": 8, "i": "", "q": "", "o": ["in reducing the growth’s app", "in driving the growth’s app", "in driving the app’s growth", "in reducing the app’s growth"], "a": 2, "p": "3-1"}, {"u": 3, "s": "Text Completion", "n": 1, "i": "", "q": "", "o": ["Sometimes referred to as a “network of networks”", "Sometimes referring to as a “network of networks”", "Sometimes referred for as a “network of networks”", "Sometimes referring for as a “network of networks”"], "a": 0, "p": "3-2"}, {"u": 3, "s": "Text Completion", "n": 2, "i": "", "q": "", "o": ["since the early 1990s", "of the early 1990s", "from the early 1990s", "until the early 1990s"], "a": 0, "p": "3-2"}, {"u": 3, "s": "Text Completion", "n": 3, "i": "", "q": "", "o": ["despite the largely prevalence of", "due to the largely prevalence of", "largely due to the prevalence of", "largely despite the prevalence of"], "a": 2, "p": "3-2"}, {"u": 3, "s": "Text Completion", "n": 4, "i": "", "q": "", "o": ["which connects to one of its networks", "who connects to one of its networks", "where connects to one of its networks", "why connects to one of its networks"], "a": 1, "p": "3-2"}, {"u": 3, "s": "Text Completion", "n": 5, "i": "", "q": "", "o": ["by many different locations", "of many different locations", "on many different locations", "at many different locations"], "a": 3, "p": "3-2"}, {"u": 3, "s": "Text Completion", "n": 6, "i": "", "q": "", "o": ["the large and growing number for", "a large and growing number for", "the large and growing number of", "a large and growing number of"], "a": 3, "p": "3-2"}], "passages": {"2-1": ["A chatbot is a text-based conversational AI agent. Through turns of conversation, a chatbot can guide, advise, and remedy questions and concerns on any topic. These guided conversations can help users search for resources in more abstract ways than via a search bar and also provide a more customised experience based on each user’s needs.", "A chatbot can simulate conversation and idea exchange for low-stakes skills practice. Users can practise language-based soft skills like leading a class discussion, guiding a parent-teacher conference, or even [[1]]. With a chatbot, users can try out new competencies and hone skills [[2]] the downsides of practising with a person (e.g. judgement, time, repetition). Chatbot conversations can be recorded and reviewed. Instructors can read through anonymous conversations to get a sense of [[3]] and the nature of inquiries coming into the chatbot.", "Chatbots can support students in finding course details quickly [[4]]. This can prevent the burden for instructional staff, as the chatbot can serve as the first line of communication regarding due dates, assignment details, homework resources, etc. In addition, students can get the help and information they need at any hour of the day. The teaching team will save time not having to answer similar questions over and over again, and students [[5]].", "[[6]]. By asking or responding to a set of questions, the students can learn through repetition as well as accompanying explanations. [[7]], and is available as a practice partner at any time of day or night. This affords learners agency to learn at [[8]]. Additionally, chatbots can adapt and modify over time to shape the learner’s pathway."], "2-2": ["Artificial Intelligence (AI) has revolutionised the manufacturing industry, offering numerous benefits that have improved efficiency, productivity, and overall profitability.", "One significant advantage of AI in manufacturing is the ability to improve accuracy and quality control. [[1]], as these systems are designed to perform tasks with precision, consistency, and attention to detail. This ensures that product quality remains consistent throughout the production process, decreasing the costs [[2]]. Additionally, AI can detect problems in real-time, enabling manufacturers to address issues promptly and [[3]].", "Another key benefit of AI in manufacturing is [[4]] to enhance production efficiency. AI algorithms can analyse vast amounts of data quickly and identify patterns or trends [[5]]. This allows manufacturers to optimise their production processes, making them more cost-effective and time-efficient. Furthermore, AI-powered machines and robots can perform tasks faster than humans, maximising productivity. [[6]], manufacturers can achieve higher production rates and increase their profits."], "3-1": ["In recent years, an app called TikTok has taken the social media world by storm. With its short-form videos, catchy dances, and creative content, TikTok has become a global sensation, [[1]].", "TikTok, [[2]], was launched in 2016 but gained immense popularity in the past few years. The app allows users to create and share 15 to 60-second videos, often featuring lip-syncing, dancing, comedy sketches, and various challenges. Its addictive and easily digestible content format has appealed [[3]], particularly younger generations.", "TikTok’s popularity knows no bounds. The app has gathered an enormous user base, surpassing 2 billion downloads worldwide. It has become especially popular in markets such as the United States, India, and Brazil, [[4]]. TikTok’s global reach has turned ordinary individuals into viral sensations, [[5]].", "One of the key factors behind TikTok’s success is its powerful recommendation algorithm. The app’s algorithm analyses user behaviour, preferences, and interactions to create [[6]]. By understanding users’ interests and serving them tailored content, [[7]] and provides a constant stream of fresh, entertaining videos. This algorithmic approach has been instrumental [[8]] and fostering a vibrant and engaging user experience."], "3-2": ["Internet, a system architecture that has revolutionised mass communication, mass media, and commerce by allowing various computer networks around the world to interconnect. [[1]], the Internet emerged in the United States in the 1970s but did not become visible to the general public [[2]]. By 2020, approximately 4.5 billion people, or more than half of the world’s population, were estimated to have access to the Internet. And that number is growing, [[3]] “smart” technology and the “Internet of Things” where computer-like devices connect with the Internet or interact via wireless networks. The Internet provides a capability so powerful and general that it can be used for almost any purpose that depends on information, and it is accessible by every individual [[4]].", "It supports human communication via social media, electronic mail (e-mail), chat rooms, newsgroups, and audio and video transmission and allows people to work collaboratively [[5]]. It supports access to digital information by many applications, including the World Wide Web. The Internet has proved to be a ground for [[6]] “e-businesses” (including subsidiaries of traditional companies) that carry out most of their sales and services over the Internet."]}};
+const QS = DATA.qs, PASSAGES = DATA.passages;
+const QUESTION_SECONDS = 60; // thanh thời gian của mỗi câu chạy đầy sau 60 giây
+
+const $ = id => document.getElementById(id);
+const fmt = s => String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0');
+const esc = t => t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+let list = [], idx = 0, wrongTotal = 0, firstTry = 0, hadWrong = false, locked = false;
+let t0 = 0, tq = 0, timer = null, curSet = null;
+
+/* ---------- Home ---------- */
+const sets = [
+  {id:'2', name:'Unit 2 – The Generation Gap', note:'Gồm cả phần Text Completion', fn:q=>q.u===2},
+  {id:'3', name:'Unit 3 – Cities of the Future', note:'Gồm cả phần Text Completion', fn:q=>q.u===3},
+  {id:'all', name:'Cả hai Unit', note:'Làm liền một mạch', fn:()=>true},
+];
+$('pick').innerHTML = sets.map(s => {
+  const n = QS.filter(s.fn).length;
+  return `<button type="button" data-id="${s.id}"><span><b>${s.name}</b><small>${s.note}</small></span><span class="count">${n} câu</span></button>`;
+}).join('');
+$('pick').addEventListener('click', e => {
+  const b = e.target.closest('button'); if(!b) return;
+  start(sets.find(s => s.id === b.dataset.id));
+});
+
+function show(id){ ['home','quiz','result'].forEach(x => $(x).hidden = x !== id); window.scrollTo(0,0); }
+
+function start(set){
+  curSet = set; list = QS.filter(set.fn); idx = 0; wrongTotal = 0; firstTry = 0;
+  t0 = Date.now(); show('quiz'); render();
+  clearInterval(timer); timer = setInterval(tick, 250);
+}
+
+function tick(){
+  const now = Date.now();
+  $('total').textContent = fmt(Math.floor((now - t0)/1000));
+  if(!locked){
+    const s = (now - tq)/1000;
+    $('qtime').textContent = fmt(Math.floor(s));
+    $('timefill').style.width = Math.min(100, s/QUESTION_SECONDS*100) + '%';
+    $('timebar').classList.toggle('over', s > QUESTION_SECONDS);
+    $('timebar').setAttribute('aria-valuenow', Math.min(100, Math.round(s/QUESTION_SECONDS*100)));
+  }
+}
+
+function passageHTML(key, n){
+  return PASSAGES[key].map(p => '<p>' + esc(p).replace(/\[\[(\d)\]\]/g, (m, d) =>
+    `<span class="blank${+d===n?' active':''}" data-n="${d}">(${d}) ____</span>`) + '</p>').join('');
+}
+
+function render(){
+  const q = list[idx]; locked = false; hadWrong = false; tq = Date.now();
+  $('counter').textContent = `Câu ${idx+1} / ${list.length}`;
+  $('progfill').style.width = (idx/list.length*100) + '%';
+  $('timefill').style.width = '0'; $('qtime').textContent = '00:00'; $('timebar').classList.remove('over');
+  let h = `<span class="tag">Unit ${q.u} · ${q.s}</span>`;
+  if(q.i) h += `<p class="instr">${q.i}</p>`;
+  if(q.p) h += `<div class="passage" id="passage">${passageHTML(q.p, q.n)}</div><p class="blankq">Chọn đáp án cho chỗ trống (${q.n})</p>`;
+  else h += `<div class="qtext">${q.q}</div>`;
+  h += '<ul class="opts" id="opts">' + q.o.map((o,i) =>
+    `<li><button type="button" class="opt" data-i="${i}"><span class="l">${'ABCD'[i]}</span><span>${o}</span></button></li>`).join('') + '</ul>';
+  h += '<div class="ok pop" id="ok" hidden><span>Chính xác!</span><button class="next" id="next" type="button"></button></div>';
+  $('card').innerHTML = h;
+  $('next').textContent = idx === list.length-1 ? 'Hoàn thành' : 'Câu tiếp theo';
+  const a = document.querySelector('.blank.active');
+  if(a) a.scrollIntoView({block:'center'});
+  window.scrollTo(0,0);
+}
+
+$('card').addEventListener('click', e => {
+  const o = e.target.closest('.opt');
+  if(o) return choose(+o.dataset.i, o);
+  if(e.target.closest('#next')) next();
+});
+
+function choose(i, el){
+  if(locked) return;
+  const q = list[idx];
+  if(i === q.a){
+    locked = true;
+    el.classList.add('right');
+    document.querySelectorAll('.opt').forEach(b => { if(b !== el) b.classList.add('dim'); });
+    if(!hadWrong) firstTry++;
+    $('ok').hidden = false;
+    $('next').focus({preventScroll:true});
+    $('ok').scrollIntoView({block:'nearest',behavior:'smooth'});
+    $('qtime').textContent = $('qtime').textContent;
+  } else {
+    hadWrong = true; wrongTotal++;
+    el.classList.add('wrong');
+    if(navigator.vibrate) navigator.vibrate(180);
+    const box = $('opts'); box.classList.remove('shake'); void box.offsetWidth; box.classList.add('shake');
+    setTimeout(() => { el.classList.remove('wrong'); el.blur(); }, 750);
+    setTimeout(() => box.classList.remove('shake'), 520);
+  }
+}
+
+function next(){
+  if(!locked) return;
+  if(idx < list.length-1){ idx++; render(); } else finish();
+}
+
+function finish(){
+  clearInterval(timer);
+  $('progfill').style.width = '100%';
+  $('rTime').textContent = fmt(Math.floor((Date.now()-t0)/1000));
+  $('rFirst').textContent = firstTry + '/' + list.length;
+  $('rWrong').textContent = wrongTotal;
+  $('resSub').textContent = curSet.name;
+  show('result');
+}
+
+$('again').onclick = () => start(curSet);
+$('homeBtn').onclick = () => { show('home'); };
+$('quit').onclick = () => { $('dlg').hidden = false; $('stay').focus(); };
+$('stay').onclick = () => { $('dlg').hidden = true; };
+$('leave').onclick = () => { $('dlg').hidden = true; clearInterval(timer); show('home'); };
+
+document.addEventListener('keydown', e => {
+  if(!$('dlg').hidden){ if(e.key==='Escape') $('dlg').hidden = true; return; }
+  if($('quiz').hidden) return;
+  const k = e.key.toUpperCase();
+  if('ABCD'.includes(k) && k.length === 1 && !e.ctrlKey && !e.metaKey){
+    const b = document.querySelectorAll('.opt')[ 'ABCD'.indexOf(k) ]; if(b) b.click();
+  } else if(e.key === 'Enter' && locked){ e.preventDefault(); next(); }
+});
+</script>
+</body>
+</html>
